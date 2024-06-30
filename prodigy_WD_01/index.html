@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nav page</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="script" href="index.js">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+
+        </div>
+        <nav>
+            <ul>
+                <li class="items"><a href="#home" class="link active">HOME</a></li>
+                <li class="items"><a href="#about" class="link">ABOUT</a></li>
+                <li class="items"><a href="#contact" class="link">CONTACT</a></li>
+                <li class="items"><a href="#login" class="link">LOGIN</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="sections" id="home">
+            <h1>HOME</h1>
+           
+        </div>
+        <div class="sections" id="about">
+            <h1>ABOUT</h1>
+        </div>
+        <div class="sections" id="contact">
+            <h1>CONTACT</h1>
+        </div>
+        <div class="sections" id="login">
+            <h1>LOGIN</h1>
+        </div>
+    </main>
+<script>
+      var header = document.querySelector("header");
+        var links = document.querySelectorAll(".link");
+        var sections = document.querySelectorAll('.sections');
+        window.onscroll = function () {
+            if (window.pageYOffset > header.offsetHeight) {
+                header.style.background = 'rgba(0,0,0,0.5)';
+            }
+            else {
+                header.style.background = 'black';
+            }
+            var current = 'home';
+            sections.forEach((section) => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 60) {
+                    current = section.getAttribute('id');
+                }
+            })
+            links.forEach((item) => {
+                console.log(item)
+                item.classList.remove('active');
+                if (item.href.includes(current)) {
+                    item.classList.add("active")
+                }
+                else {
+                    console.log("else")
+                    item.classList.remove("active")
+
+                }
+
+
+            })
+        }
+
+
+
+
+    
+
+</script>
+   
+</body>
+
+</html>
